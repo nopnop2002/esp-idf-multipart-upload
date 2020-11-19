@@ -3,7 +3,8 @@
 
 typedef struct {
 	uint16_t command;
-	char fileName[64];
+	char localFileName[64];
+	char remoteFileName[64];
 	TaskHandle_t taskHandle;
 } REQUEST_t;
 

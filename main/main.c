@@ -220,7 +220,9 @@ void app_main(void)
 		struct dirent*pe = readdir(dir);
 		if (!pe) break;
 		ESP_LOGI(TAG, "d_name=%s d_ino=%d d_type=%x", pe->d_name,pe->d_ino, pe->d_type);
-		strcpy(requestBuf.fileName, pe->d_name);
+		strcpy(requestBuf.remoteFileName, pe->d_name);
+		strcpy(requestBuf.localFileName, "/spiffs/");
+		strcat(requestBuf.localFileName, pe->d_name);
 		if (xQueueSend(xQueueRequest, &requestBuf, 10) != pdPASS) {
 			ESP_LOGE(TAG, "xQueueSend fail");
 		} else {

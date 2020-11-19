@@ -51,11 +51,10 @@ void http_post_task(void *pvParameters)
 		ESP_LOGI(TAG,"requestBuf.command=%d", requestBuf.command);
 		if (requestBuf.command == CMD_HALT) break;
 
-		ESP_LOGI(TAG,"requestBuf.fileName=%s", requestBuf.fileName);
-		char localFileName[128];
-		sprintf(localFileName, "/spiffs/%s", requestBuf.fileName);
+		ESP_LOGI(TAG,"requestBuf.localFileName=%s", requestBuf.localFileName);
+		ESP_LOGI(TAG,"requestBuf.remoteFileName=%s", requestBuf.remoteFileName);
 		struct stat statBuf;
-		if (stat(localFileName, &statBuf) == 0) {
+		if (stat(requestBuf.localFileName, &statBuf) == 0) {
 			ESP_LOGI(TAG, "st_size=%d", (int)statBuf.st_size);
 		} else {
 			ESP_LOGE(TAG, "stat fail");
@@ -113,7 +112,7 @@ void http_post_task(void *pvParameters)
 		char BODY[512];
 		sprintf(header, "--%s\r\n", BOUNDARY);
 		strcpy(BODY, header);
-		sprintf(header, "Content-Disposition: form-data; name=\"uploadFile\"; filename=\"%s\"\r\n", requestBuf.fileName);
+		sprintf(header, "Content-Disposition: form-data; name=\"uploadFile\"; filename=\"%s\"\r\n", requestBuf.remoteFileName);
 		strcat(BODY, header);
 		sprintf(header, "Content-Type: application/octet-stream\r\n\r\n");
 		strcat(BODY, header);
@@ -144,7 +143,7 @@ void http_post_task(void *pvParameters)
 		}
 		ESP_LOGI(TAG, "BODY socket send success");
 
-		FILE* f=fopen(localFileName, "rb");
+		FILE* f=fopen(requestBuf.localFileName, "rb");
 		uint8_t dataBuffer[128];
 		if (f == NULL) {
 			ESP_LOGE(TAG, "Failed to open file for reading");
