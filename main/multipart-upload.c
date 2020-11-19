@@ -103,7 +103,7 @@ void http_post_task(void *pvParameters)
 		strcpy(HEADER, header);
 		sprintf(header, "Host: %s:%s\r\n", CONFIG_WEB_SERVER, CONFIG_WEB_PORT);
 		strcat(HEADER, header);
-		sprintf(header, "User-Agent: esp-idf/1.0 esp32\r\n");
+		sprintf(header, "User-Agent: esp-idf/%d.%d.%d esp32\r\n", ESP_IDF_VERSION_MAJOR, ESP_IDF_VERSION_MINOR, ESP_IDF_VERSION_PATCH);
 		strcat(HEADER, header);
 		sprintf(header, "Accept: */*\r\n");
 		strcat(HEADER, header);

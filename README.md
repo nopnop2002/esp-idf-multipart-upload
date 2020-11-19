@@ -53,8 +53,6 @@ make menuconfig
 make flash monitor
 ```
 
-You have to set this config value with menuconfig.
-
 You have to set this config value with menuconfig.   
 - CONFIG_ESP_WIFI_SSID   
 SSID of your wifi.
@@ -79,23 +77,23 @@ Path of your WEB Server.
 
 
 ## About multipart/form-data
-This library send this HTTP header.   
+This example send this HTTP header.   
 
 ```
 POST PATH HTTP/1.1
-HOST: HOST
-User-Agent: esp8266_multipart/1.0
+HOST: HOST:PORT
+User-Agent: esp-idf/X.Y.Z esp32
 Accept: */*
-Content-Type: multipart/form-data; boundary=X-ESP8266_MULTIPART
+Content-Type: multipart/form-data; boundary=X-ESPIDF_MULTIPART
 Content-Length: xxx
 
---X-ESP8266_MULTIPART
+--X-ESPIDF_MULTIPART
 Content-Disposition: form-data; name="uploadFile"; filename="hoge.jpg"
 Content-Type: Content-Type: application/octet-stream
 
 binary-data
 
---X-ESP8266_MULTIPART--
+--X-ESPIDF_MULTIPART--
 ```
 
 
