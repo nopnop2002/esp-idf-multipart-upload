@@ -1,0 +1,45 @@
+menu "Application Configuration"
+
+	menu "WiFi Setting"
+		config ESP_WIFI_SSID
+			string "WiFi SSID"
+			default "myssid"
+			help
+				SSID (network name) for the example to connect to.
+
+		config ESP_WIFI_PASSWORD
+			string "WiFi Password"
+			default "mypassword"
+			help
+				WiFi password (WPA or WPA2) for the example to use.
+
+		config ESP_MAXIMUM_RETRY
+			int "Maximum retry"
+			default 5
+			help
+				Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+	endmenu
+
+	menu "HTTP Server Setting"
+
+		config WEB_SERVER
+			string "HTTP Server"
+			default "myhttpserver"
+			help
+				HTTP Server host name or ip address for the example to use.
+
+		config WEB_PORT
+			string "HTTP Port"
+			default "8080"
+			help
+				HTTP Server port for the example to use.
+
+		config WEB_PATH
+			string "HTTP Url"
+			default "/upload_multipart"
+			help
+				HTTP Server url for the example to use.
+
+	endmenu
+
+endmenu
