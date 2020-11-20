@@ -17,8 +17,8 @@ python -m pip install tornado
 
 ### Start WEB Server using Tornado
 ```
-git clonse https://github.com/nopnop2002/esp8266-multipart
-cd esp8266-multipart/tornado
+git clonse https://github.com/nopnop2002/esp-idf-multipart-upload
+cd esp-idf-multipart-upload/tornado
 python upload.py
 ```
 
@@ -36,8 +36,8 @@ python -m pip install flask
 
 ### Start WEB Server using Flask
 ```
-git clonse https://github.com/nopnop2002/esp8266-multipart
-cd esp8266-multipart/flask
+git clonse https://github.com/nopnop2002/esp-idf-multipart-upload
+cd esp-idf-multipart-upload/flask
 python upload.py
 ```
 
