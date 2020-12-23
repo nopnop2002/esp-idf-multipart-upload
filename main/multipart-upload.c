@@ -1,4 +1,4 @@
-/* HTTP GET Example using plain POSIX sockets
+/* HTTP POST Example using plain POSIX sockets
 
    This example code is in the Public Domain (or CC0 licensed, at your option.)
 
@@ -45,6 +45,8 @@ void http_post_task(void *pvParameters)
 	char recv_buf[64];
 
 	REQUEST_t requestBuf;
+	RESPONSE_t responseBuf;
+
 	while(1) {
 		ESP_LOGI(TAG,"Waitting....");
 		xQueueReceive(xQueueRequest, &requestBuf, portMAX_DELAY);
@@ -57,6 +59,8 @@ void http_post_task(void *pvParameters)
 		if (stat(requestBuf.localFileName, &statBuf) == 0) {
 			ESP_LOGI(TAG, "st_size=%d", (int)statBuf.st_size);
 		} else {
+			strcpy(responseBuf.response,"local file not found");
+			xQueueSend(xQueueResponse, &responseBuf, 10);
 			ESP_LOGE(TAG, "stat fail");
 			continue;
 		}
@@ -64,19 +68,22 @@ void http_post_task(void *pvParameters)
 		int err = getaddrinfo(CONFIG_WEB_SERVER, CONFIG_WEB_PORT, &hints, &res);
 
 		if(err != 0 || res == NULL) {
+			strcpy(responseBuf.response,"DNS lookup failed");
+			xQueueSend(xQueueResponse, &responseBuf, 10);
 			ESP_LOGE(TAG, "DNS lookup failed err=%d res=%p", err, res);
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
 			continue;
 		}
 
 		/* Code to print the resolved IP.
-
 		   Note: inet_ntoa is non-reentrant, look at ipaddr_ntoa_r for "real" code */
 		addr = &((struct sockaddr_in *)res->ai_addr)->sin_addr;
 		ESP_LOGI(TAG, "DNS lookup succeeded. IP=%s", inet_ntoa(*addr));
 
 		int s = socket(res->ai_family, res->ai_socktype, 0);
 		if(s < 0) {
+			strcpy(responseBuf.response,"Failed to allocate socket");
+			xQueueSend(xQueueResponse, &responseBuf, 10);
 			ESP_LOGE(TAG, "... Failed to allocate socket.");
 			freeaddrinfo(res);
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -85,6 +92,8 @@ void http_post_task(void *pvParameters)
 		ESP_LOGI(TAG, "... allocated socket");
 
 		if(connect(s, res->ai_addr, res->ai_addrlen) != 0) {
+			strcpy(responseBuf.response,"socket connect failed");
+			xQueueSend(xQueueResponse, &responseBuf, 10);
 			ESP_LOGE(TAG, "... socket connect failed errno=%d", errno);
 			close(s);
 			freeaddrinfo(res);
@@ -182,7 +191,6 @@ void http_post_task(void *pvParameters)
 
 		/* Read HTTP response */
 		int readed;
-		RESPONSE_t responseBuf;
 		bzero(responseBuf.response, sizeof(responseBuf.response));
 		do {
 			bzero(recv_buf, sizeof(recv_buf));
