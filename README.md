@@ -26,7 +26,7 @@ idf.py menuconfig
 idf.py flash
 ```
 
-# Configuration   
+## Configuration   
 You have to set this config value with menuconfig.   
 - CONFIG_ESP_WIFI_SSID   
 SSID of your wifi.
