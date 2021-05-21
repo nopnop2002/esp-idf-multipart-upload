@@ -3,7 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := esp-idf-multipart-upload
+PROJECT_NAME := multipart-upload
 
 include $(IDF_PATH)/make/project.mk
 

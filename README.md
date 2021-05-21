@@ -8,14 +8,25 @@ Download the server from [here](https://github.com/nopnop2002/multipart-upload-s
 
 # ESP32 Side
 
-## Installation
+## Installation for ESP32
 ```
 git clone https://github.com/nopnop2002/esp-idf-multipart-upload
 cd esp-idf-multipart-upload/
-make menuconfig
-make flash monitor
+idf.py set-target esp32
+idf.py menuconfig
+idf.py flash
 ```
 
+## Installation for ESP32S2
+```
+git clone https://github.com/nopnop2002/esp-idf-multipart-upload
+cd esp-idf-multipart-upload/
+idf.py set-target esp32s2
+idf.py menuconfig
+idf.py flash
+```
+
+# Configuration   
 You have to set this config value with menuconfig.   
 - CONFIG_ESP_WIFI_SSID   
 SSID of your wifi.
@@ -41,7 +52,7 @@ Path of your WEB Server.
 
 ## About multipart/form-data
 This example send this HTTP header.   
-
+If the parameter expected by the server is not "upfile", you need to fix it.   
 ```
 POST PATH HTTP/1.1
 HOST: HOST:PORT
@@ -51,7 +62,7 @@ Content-Type: multipart/form-data; boundary=X-ESPIDF_MULTIPART
 Content-Length: xxx
 
 --X-ESPIDF_MULTIPART
-Content-Disposition: form-data; name="uploadFile"; filename="hoge.jpg"
+Content-Disposition: form-data; name="upfile"; filename="hoge.jpg"
 Content-Type: Content-Type: application/octet-stream
 
 binary-data

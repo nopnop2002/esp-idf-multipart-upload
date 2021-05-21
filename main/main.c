@@ -237,4 +237,5 @@ void app_main(void)
 		}
 	} // end while
 	closedir(dir);
+	ESP_LOGI(TAG, "All file uploded");
 }
