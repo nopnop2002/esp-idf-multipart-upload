@@ -42,11 +42,12 @@ Port number of your WEB Server.
 Path of your WEB Server.
 
 ![menuconfig-1](https://user-images.githubusercontent.com/6020549/99719529-c07e8700-2aef-11eb-8a11-e5a7aaf2cbd4.jpg)
-
 ![menuconfig-2](https://user-images.githubusercontent.com/6020549/99719539-c3797780-2aef-11eb-9cc4-4053c2640434.jpg)
 
+## WiFi Setting
 ![menuconfig-3](https://user-images.githubusercontent.com/6020549/99719544-c70cfe80-2aef-11eb-8242-9ee855b5c8c2.jpg)
 
+## HTTP Server Setting
 ![menuconfig-4](https://user-images.githubusercontent.com/6020549/99719550-c96f5880-2aef-11eb-971d-33eb3cf778a2.jpg)
 
 
