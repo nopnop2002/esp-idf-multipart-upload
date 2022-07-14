@@ -8,23 +8,20 @@ Download the server from [here](https://github.com/nopnop2002/multipart-upload-s
 
 # ESP32 Side
 
-## Installation for ESP32
+## Software requirements
+esp-idf ver4.4 or later.   
+This is because this version supports ESP32-C3.   
+
+
+## Installation
 ```
 git clone https://github.com/nopnop2002/esp-idf-multipart-upload
 cd esp-idf-multipart-upload/
-idf.py set-target esp32
+idf.py set-target {esp32/esp32s2/esp32s3/esp32c3}
 idf.py menuconfig
 idf.py flash
 ```
 
-## Installation for ESP32S2
-```
-git clone https://github.com/nopnop2002/esp-idf-multipart-upload
-cd esp-idf-multipart-upload/
-idf.py set-target esp32s2
-idf.py menuconfig
-idf.py flash
-```
 
 ## Configuration   
 You have to set this config value with menuconfig.   
@@ -48,7 +45,7 @@ Path of your WEB Server.
 ![menuconfig-3](https://user-images.githubusercontent.com/6020549/99719544-c70cfe80-2aef-11eb-8242-9ee855b5c8c2.jpg)
 
 ## HTTP Server Setting
-![menuconfig-4](https://user-images.githubusercontent.com/6020549/99719550-c96f5880-2aef-11eb-971d-33eb3cf778a2.jpg)
+![menuconfig-4](https://user-images.githubusercontent.com/6020549/178969271-63738e64-0a88-48be-9b24-8927b499a1bf.jpg)
 
 
 ## About multipart/form-data

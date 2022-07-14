@@ -24,7 +24,7 @@ menu "Application Configuration"
 
 		config WEB_SERVER
 			string "HTTP Server"
-			default "myhttpserver"
+			default "HttpSserver.local"
 			help
 				HTTP Server host name or ip address for the example to use.
 
