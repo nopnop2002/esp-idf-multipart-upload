@@ -32,7 +32,7 @@ PASSWORD of your wifi.
 - CONFIG_ESP_MAXIMUM_RETRY   
 Maximum number of retries when connecting to wifi.
 - CONFIG_ESP_WEB_SERVER   
-IP or DNS of your WEB Server.
+IP address or mDNS host name of your WEB Server.
 - CONFIG_ESP_WEB_PORT   
 Port number of your WEB Server.
 - CONFIG_ESP_WEB_PATH   
@@ -47,10 +47,6 @@ Path of your WEB Server.
 ## HTTP Server Setting
 
 ![menuconfig-4](https://user-images.githubusercontent.com/6020549/178969271-63738e64-0a88-48be-9b24-8927b499a1bf.jpg)
-
-- CONFIG_ESP_WEB_SERVER   
-You can use IP address or mDNS host name.
-
 
 ## About multipart/form-data
 This example send this HTTP header.   
