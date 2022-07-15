@@ -50,7 +50,7 @@ Path of your WEB Server.
 
 ## About multipart/form-data
 This example send this HTTP header.   
-If the parameter expected by the server is not "upfile", you need to fix it.   
+If the parameter expected by the server is not "upfile", you need to change it.   
 ```
 POST PATH HTTP/1.1
 HOST: HOST:PORT
