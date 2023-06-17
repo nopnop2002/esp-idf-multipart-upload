@@ -10,7 +10,7 @@ Download the server from [here](https://github.com/nopnop2002/multipart-upload-s
 
 ## Software requirements
 ESP-IDF V4.4/V5.0.   
-ESP-IDF V5 is required when using ESP32-C2.   
+ESP-IDF V5.0 is required when using ESP32-C2.   
 
 
 ## Installation
