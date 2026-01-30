@@ -9,9 +9,8 @@ Download the server from [here](https://github.com/nopnop2002/multipart-upload-s
 # ESP32 Side
 
 ## Software requirements
-ESP-IDF V4.4/V5.x.   
-ESP-IDF V5.0 is required when using ESP32-C2.   
-ESP-IDF V5.1 is required when using ESP32-C6.   
+ESP-IDF V5.0 or later.   
+ESP-IDF V4.4 release branch reached EOL in July 2024.   
 
 
 ## Installation
